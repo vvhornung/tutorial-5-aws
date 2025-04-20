@@ -53,6 +53,14 @@ Este tutorial te guiará paso a paso para desplegar una aplicación Django usand
 
 ```bash
 sudo dnf update -y
+![{47F6997D-BEC4-4732-A2D5-9875EDEF66CA}](https://github.com/user-attachments/assets/38b2eae5-8e84-4454-869a-86a3803ea848)
+
 sudo dnf install -y docker
+![{829C16E3-A369-4D70-9120-B31DDA044871}](https://github.com/user-attachments/assets/57923511-d582-4cfb-9021-5f2b9981e91e)
+
 sudo systemctl enable --now docker
+![{FFD5CECE-E9DF-497C-A8ED-09753C7D0CE1}](https://github.com/user-attachments/assets/2bf9b3b4-cebd-4cfa-ba3b-d8b98e8f1ae4)
+
 docker --version
+![{D99EECFD-F03B-445E-BC06-D366AC9FF624}](https://github.com/user-attachments/assets/c1590b77-a178-4fb8-a1e1-61b6706282fa)
+
