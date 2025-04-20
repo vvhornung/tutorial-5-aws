@@ -51,7 +51,7 @@ Este tutorial te guiará paso a paso para desplegar una aplicación Django usand
 
 ### En la consola EC2
 
-```bash
+
 sudo dnf update -y
 ![{47F6997D-BEC4-4732-A2D5-9875EDEF66CA}](https://github.com/user-attachments/assets/38b2eae5-8e84-4454-869a-86a3803ea848)
 
