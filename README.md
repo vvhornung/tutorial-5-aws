@@ -1,4 +1,4 @@
-# tutorial-5-aws
+![{8C43196F-C8E6-467B-A1E9-C9023E7F7E51}](https://github.com/user-attachments/assets/4c515885-1761-43dd-94eb-414dc98fc736)# tutorial-5-aws
 # Tutorial de Despliegue Django + Docker en AWS
 
 Este tutorial te guiará paso a paso para desplegar una aplicación Django usando Docker en una instancia EC2 de AWS, conectada a una base de datos RDS.
@@ -6,12 +6,16 @@ Este tutorial te guiará paso a paso para desplegar una aplicación Django usand
 ---
 
 ## A. Creación de Instancia EC2 en AWS
-1. y 2. ingreso a la plataforma
+1,2. ingreso a la plataforma
    
 3. Dirígete al curso `116841` con el Nickname **TEIS-2025-1**.
-![{8AFF31D6-6961-4BD5-90E2-E63891849EB6}](https://github.com/user-attachments/assets/8decbf23-c3e6-4c65-9e9d-cbec78ba89e3)
+   
+![{3B667946-F782-4CE3-9FC4-4DB70F448716}](https://github.com/user-attachments/assets/19211668-ae69-41d0-b732-67ae8ac121a7)
 
-7. Presiona **Start Lab**.
+5. ingreso a AWS learner lab
+6. Presiona **Start Lab**.
+![{8C43196F-C8E6-467B-A1E9-C9023E7F7E51}](https://github.com/user-attachments/assets/942dcc84-3204-4a8a-825d-e17d8eac5613)
+
 8. Espera que el ícono se ponga verde y haz clic en **AWS**.
 9. Busca y entra a **EC2**.
 10. Click en **Launch Instance**.
