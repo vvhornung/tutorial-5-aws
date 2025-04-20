@@ -51,6 +51,8 @@ Este tutorial te guiará paso a paso para desplegar una aplicación Django usand
 
 ### En la consola EC2
 
+paso 1:Corra el siguiente comando desde la consola de AWS (estamos en una maquina
+Amazon Linux) para actualizar el sistema, instalar y activar Docker, y verificar su instalación. 
 
 sudo dnf update -y
 ![{47F6997D-BEC4-4732-A2D5-9875EDEF66CA}](https://github.com/user-attachments/assets/38b2eae5-8e84-4454-869a-86a3803ea848)
@@ -63,4 +65,85 @@ sudo systemctl enable --now docker
 
 docker --version
 ![{D99EECFD-F03B-445E-BC06-D366AC9FF624}](https://github.com/user-attachments/assets/c1590b77-a178-4fb8-a1e1-61b6706282fa)
+
+
+Paso 2: Vuelva al navegador, al sitio de AWS, y busque “Aurora and RDS”.
+
+Paso 3: Busque y dé clic en la opción “Create database”.
+
+Paso 4: Seleccione “MySQL”, verifique que tiene activa la versión “MySQL 8.0”, y seleccione “Free tier”.
+
+Paso 5: Complete el formulario con los siguientes datos:  
+- DB instance identifier: `teis20251`  
+- Master username: `admin`  
+- Master password: `<TuContraseñaSegura>`
+
+Paso 6: Haga clic en el botón **Create database**.
+
+Paso 7: Espere unos minutos a que la base de datos esté en estado “Available”.
+
+Paso 8: Haga clic sobre la base de datos creada y copie el valor de **Endpoint**.
+
+Paso 9: En la sección **Connectivity & security**, haga clic en el enlace del **VPC security group** (nombre como `sg-...`).
+
+Paso 10: En la página del grupo de seguridad, haga clic en **Edit inbound rules**.
+
+Paso 11: Agregue una nueva regla con:  
+- Type: `MySQL/Aurora`  
+- Port: `3306`  
+- Source: `My IP` (o la IP de su instancia EC2 si prefiere más seguridad)
+
+Paso 12: Vuelva a la terminal EC2. Instale el cliente de MySQL.  
+`sudo dnf install -y mariadb105`
+
+Paso 13: Conéctese a la base de datos usando el endpoint copiado.  
+`mysql -h <ENDPOINT> -P 3306 -u admin -p`
+
+Paso 14: Cuando lo solicite, introduzca la contraseña que configuró para el usuario admin.
+
+Paso 15: Ya dentro de la consola de MySQL, ejecute el siguiente comando:  
+`CREATE DATABASE djangodocker;`
+
+Paso 16: Escriba `exit` para salir.
+
+---
+
+## C. Descargar proyecto Django y correr Docker
+
+Paso 1: Verifique que Docker funciona correctamente con el siguiente comando.  
+`sudo docker container run hello-world`
+
+Paso 2: Instale Git en la instancia EC2.  
+`sudo dnf install git -y`
+
+Paso 3: Clone el repositorio de ejemplo desde GitHub.  
+`git clone https://github.com/Nram94/djangoDocker.git`
+
+Paso 4: Ingrese a la carpeta del proyecto.  
+`cd djangoDocker`
+
+Paso 5: Copie el archivo `.env.example` a `.env`.  
+`cp .env.example .env`
+
+Paso 6: Edite el archivo `.env` para incluir los datos de la base de datos RDS.  
+`nano .env`
+
+Paso 7: Modifique las siguientes variables:  
+- `DB_HOST=<ENDPOINT_DE_RDS>`  
+- `DB_DATABASE=djangodocker`  
+- `DB_USERNAME=admin`  
+- `DB_PASSWORD=<TuContraseñaSegura>`
+
+Paso 8: Guarde y cierre el editor (`Ctrl + X`, luego `Y`, luego `Enter`).
+
+Paso 9: Construya la imagen Docker.  
+`sudo docker image build -t django-app .`
+
+Paso 10: Ejecute el contenedor.  
+`sudo docker container run -d --name django-docker -p 80:80 django-app`
+
+Paso 11: Desde el navegador, visite la IP pública de su instancia EC2 con la ruta `/public/`.  
+Ejemplo: `http://<IP_PÚBLICA_EC2>/public/`
+
+---
 
