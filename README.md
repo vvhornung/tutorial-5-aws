@@ -155,9 +155,6 @@ Paso 5: Copie el archivo `.env.example` a `.env`.
 `cp .env.example .env`
 Paso 6: Edite el archivo `.env` para incluir los datos de la base de datos RDS.  
 `nano .env`
-![{4F517039-07D5-4143-851B-E00BE7F6460E}](https://github.com/user-attachments/assets/1a4aadb3-79ef-4e16-a4ad-3121d4477113)
-
-
 Paso 7: Modifique las siguientes variables:  
 - `DB_HOST=<ENDPOINT_DE_RDS>`  
 - `DB_DATABASE=djangodocker`  
@@ -165,15 +162,23 @@ Paso 7: Modifique las siguientes variables:
 - `DB_PASSWORD=<TuContraseñaSegura>`
 
 Paso 8: Guarde y cierre el editor (`Ctrl + X`, luego `Y`, luego `Enter`).
+![{4F517039-07D5-4143-851B-E00BE7F6460E}](https://github.com/user-attachments/assets/1a4aadb3-79ef-4e16-a4ad-3121d4477113)
+
 
 Paso 9: Construya la imagen Docker.  
 `sudo docker image build -t django-app .`
+![{088BD73A-6EB3-47E8-848E-8F7E0CBB4268}](https://github.com/user-attachments/assets/4e25feb6-2c85-47e3-a3de-d8049625540e)
 
 Paso 10: Ejecute el contenedor.  
 `sudo docker container run -d --name django-docker -p 80:80 django-app`
+![{36306AD0-7C67-4599-A102-8DE4E8DE631F}](https://github.com/user-attachments/assets/c78635e1-9e3f-483f-87d5-a102ac0ad2a0)
+
 
 Paso 11: Desde el navegador, visite la IP pública de su instancia EC2 con la ruta `/public/`.  
 Ejemplo: `http://<IP_PÚBLICA_EC2>/public/`
+![{19AE683A-8433-42E7-AC97-4F3CCA43DEA9}](https://github.com/user-attachments/assets/539c38db-1882-4ad2-8d32-0fa31be5bd13)
+![{987F6DB0-BB2B-4952-B649-75A86D7FE38B}](https://github.com/user-attachments/assets/9c89b989-4021-4489-bbe9-5c337ffdd81c)
+
 
 ---
 
