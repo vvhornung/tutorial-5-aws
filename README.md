@@ -68,43 +68,65 @@ docker --version
 
 
 Paso 2: Vuelva al navegador, al sitio de AWS, y busque “Aurora and RDS”.
+![{E7C9925D-9DC3-4DF7-B50B-907252084AEF}](https://github.com/user-attachments/assets/398e05b7-629d-4f14-a1de-5132a9a9c679)
 
 Paso 3: Busque y dé clic en la opción “Create database”.
+![{59430674-8A03-4C35-9034-33D3B3D4A69B}](https://github.com/user-attachments/assets/05c15a56-50d9-4a92-8c0f-1e0ca81b6495)
 
 Paso 4: Seleccione “MySQL”, verifique que tiene activa la versión “MySQL 8.0”, y seleccione “Free tier”.
+![{22ED7DE6-68FE-48CF-8891-5DDB6F4DE736}](https://github.com/user-attachments/assets/1923b16a-6f65-4d94-bb6d-1c6ae9fb1aed)
 
 Paso 5: Complete el formulario con los siguientes datos:  
 - DB instance identifier: `teis20251`  
 - Master username: `admin`  
 - Master password: `<TuContraseñaSegura>`
+![{C4FFA827-1AA6-45BA-B844-DFE39BCC096A}](https://github.com/user-attachments/assets/decf2135-ec44-452a-886b-420c0d1c634f)
+
 
 Paso 6: Haga clic en el botón **Create database**.
+![{28FB1747-6A6A-4C9D-BC73-2B3BBC3639B6}](https://github.com/user-attachments/assets/68053292-1d17-4722-a232-75028122d71f)
+
 
 Paso 7: Espere unos minutos a que la base de datos esté en estado “Available”.
+![{C52B66F2-2FB8-481B-AC43-679B99FC3B12}](https://github.com/user-attachments/assets/35a9ef02-de28-4b43-bdea-a08e4f62a4e7)
 
 Paso 8: Haga clic sobre la base de datos creada y copie el valor de **Endpoint**.
+![{2D0D22BE-4DDB-4A20-A071-1364C1702E12}](https://github.com/user-attachments/assets/7f274b18-fb6d-4bb5-b305-1c55cb3d2a5d)
+
 
 Paso 9: En la sección **Connectivity & security**, haga clic en el enlace del **VPC security group** (nombre como `sg-...`).
+![{2B5D18C1-95C1-49F4-AE1C-C63C20B74719}](https://github.com/user-attachments/assets/1aa9e384-174f-4658-ae5c-b6c56a458cb1)
+![{C2761359-FA8E-47DB-BD3C-5A15AE2A05DF}](https://github.com/user-attachments/assets/e21f8dc2-69ee-4519-a108-afcfc8f5a55b)
 
 Paso 10: En la página del grupo de seguridad, haga clic en **Edit inbound rules**.
+![{192AFA8B-EE73-4BF7-B98A-F4C63F5D8C25}](https://github.com/user-attachments/assets/68dd7a0b-919f-4461-916a-ea3fadacfa7b)
+
+
 
 Paso 11: Agregue una nueva regla con:  
 - Type: `MySQL/Aurora`  
 - Port: `3306`  
 - Source: `My IP` (o la IP de su instancia EC2 si prefiere más seguridad)
+- ![{9916C7D9-D63A-4D0C-942C-784904FDD9CA}](https://github.com/user-attachments/assets/3e9b95e8-cbeb-463e-a313-f65763b6546b)
+
 
 Paso 12: Vuelva a la terminal EC2. Instale el cliente de MySQL.  
 `sudo dnf install -y mariadb105`
+![{35F9FDFB-1A39-4F89-9972-ACCD8E14255D}](https://github.com/user-attachments/assets/8c941d50-0a44-4933-98eb-a3c8bc3a25c8)
+
 
 Paso 13: Conéctese a la base de datos usando el endpoint copiado.  
-`mysql -h <ENDPOINT> -P 3306 -u admin -p`
-
 Paso 14: Cuando lo solicite, introduzca la contraseña que configuró para el usuario admin.
+mysql -h teis20251.ctgoe6u8uc83.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+![{F98C3A78-284D-4714-9D5C-7B996A825C88}](https://github.com/user-attachments/assets/0617e01f-a1b0-40fd-b3b0-65b6dc6b97ab)
+
 
 Paso 15: Ya dentro de la consola de MySQL, ejecute el siguiente comando:  
 `CREATE DATABASE djangodocker;`
+![{0D22D743-EDAB-43B8-8897-43FDB88FE59A}](https://github.com/user-attachments/assets/01111250-6ee7-440c-8a2e-046ceca4f458)
 
 Paso 16: Escriba `exit` para salir.
+![{BD88CDB5-9B61-4D08-9544-5E19FD1ED371}](https://github.com/user-attachments/assets/02b25e6c-3ad3-45df-a94a-9801d9bc24c0)
 
 ---
 
@@ -112,21 +134,29 @@ Paso 16: Escriba `exit` para salir.
 
 Paso 1: Verifique que Docker funciona correctamente con el siguiente comando.  
 `sudo docker container run hello-world`
+![{26CB6C61-2CB7-4003-9B23-1148B882067D}](https://github.com/user-attachments/assets/62fb7c78-1ed9-4d02-b932-f43cb14915a5)
+
 
 Paso 2: Instale Git en la instancia EC2.  
 `sudo dnf install git -y`
+![{039C178D-C034-440D-BF4B-E433CBF49D47}](https://github.com/user-attachments/assets/5bbf9617-1aad-4f9a-a6a0-b139aa46bfc8)
+
 
 Paso 3: Clone el repositorio de ejemplo desde GitHub.  
 `git clone https://github.com/Nram94/djangoDocker.git`
+![{5F0F02D6-6E91-49CE-8F24-FB340D13E14D}](https://github.com/user-attachments/assets/218a3534-df61-40d9-a729-796821ed4929)
+
 
 Paso 4: Ingrese a la carpeta del proyecto.  
 `cd djangoDocker`
+![{802E5590-CCB9-4043-9FCA-A039992F614D}](https://github.com/user-attachments/assets/0bc6586a-33ba-4c13-ba52-326c63f63822)
 
 Paso 5: Copie el archivo `.env.example` a `.env`.  
 `cp .env.example .env`
-
 Paso 6: Edite el archivo `.env` para incluir los datos de la base de datos RDS.  
 `nano .env`
+![{4F517039-07D5-4143-851B-E00BE7F6460E}](https://github.com/user-attachments/assets/1a4aadb3-79ef-4e16-a4ad-3121d4477113)
+
 
 Paso 7: Modifique las siguientes variables:  
 - `DB_HOST=<ENDPOINT_DE_RDS>`  
